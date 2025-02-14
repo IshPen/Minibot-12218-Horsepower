@@ -1,13 +1,6 @@
 package MiniBot.FullControl;
 
-import static com.pedropathing.follower.FollowerConstants.leftFrontMotorDirection;
-import static com.pedropathing.follower.FollowerConstants.leftFrontMotorName;
-import static com.pedropathing.follower.FollowerConstants.leftRearMotorDirection;
-import static com.pedropathing.follower.FollowerConstants.leftRearMotorName;
-import static com.pedropathing.follower.FollowerConstants.rightFrontMotorDirection;
-import static com.pedropathing.follower.FollowerConstants.rightFrontMotorName;
-import static com.pedropathing.follower.FollowerConstants.rightRearMotorDirection;
-import static com.pedropathing.follower.FollowerConstants.rightRearMotorName;
+import static com.pedropathing.follower.FollowerConstants.*;
 
 import com.pedropathing.util.Constants;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
