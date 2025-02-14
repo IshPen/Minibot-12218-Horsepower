@@ -102,7 +102,6 @@ public class RegionalsFullTeleOP extends OpMode {
     }
     @Override
     public void loop() {
-        /// Update Arm Extension Color State ///
         /// CLAW CONTROL ///
         if (gamepad2ButtonHelper.isButtonJustPressed("x")) {
             if (clawPincersState == ClawPincersState.OPEN) {
@@ -111,7 +110,7 @@ public class RegionalsFullTeleOP extends OpMode {
             else if (clawPincersState == ClawPincersState.CLOSE) {
                 clawPincersState = ClawPincersState.OPEN;
             }
-        } /// Make clawPincerState open or closed
+        } // Make clawPincerState open or closed
         switch (clawPincersState) {
             case OPEN:
                 openClaw();
@@ -120,6 +119,7 @@ public class RegionalsFullTeleOP extends OpMode {
                 closeClaw();
                 break;
         }
+        /// Switch Claw States
         if (gamepad2ButtonHelper.isButtonJustPressed("b")) {
             switch (clawState) {
                 case GROUND:
@@ -129,6 +129,7 @@ public class RegionalsFullTeleOP extends OpMode {
                     clawState = ClawState.SCORING_CHAMBER;
                     break;
                 case SCORING_CHAMBER:
+                    clawState = ClawState.GROUND;
                     break;
             }
         }
@@ -164,17 +165,14 @@ public class RegionalsFullTeleOP extends OpMode {
         else {
             haltRotation();
         }
+        /// ^Arm Control^ ///
 
+        /// DRIVETRAIN CONTROL ///
         double linearSpeedControl = 0.6;
         double headingSpeedControl = 0.3;
         double y = -gamepad1.left_stick_y * linearSpeedControl; // Remember, this is reversed!
         double x = gamepad1.left_stick_x * linearSpeedControl; // this is strafing
         double rx = gamepad1.right_stick_x * headingSpeedControl;
-
-        // Denominator is the largest motor power (absolute value) or 1
-        // This ensures all the powers maintain the same ratio, but only when
-        // at least one is out of the range [-1, 1]
-
         double denominator = Math.max(Math.abs(y) + Math.abs(x) + Math.abs(rx), 1);
         double leftFrontPower = (y + x + rx) / denominator;
         double leftRearPower = (y - x + rx) / denominator;
@@ -185,6 +183,7 @@ public class RegionalsFullTeleOP extends OpMode {
         leftRear.setPower(leftRearPower);
         rightFront.setPower(rightFrontPower);
         rightRear.setPower(rightRearPower);
+        /// ^Drivetrain Control^ ///
 
         /// TELEMETRY FEEDBACK ///
         if (clawPincersState == ClawPincersState.OPEN) {telemetry.addData("Claw State", "\uD83D\uDFE9");} else {telemetry.addData("Claw State", "\uD83D\uDFE5");}
