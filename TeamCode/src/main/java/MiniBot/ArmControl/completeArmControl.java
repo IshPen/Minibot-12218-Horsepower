@@ -22,6 +22,8 @@ public class completeArmControl extends OpMode {
     public void loop() {
         telemetry.addData("ExtensionPosition1: ", extensionMotor1.getCurrentPosition());
         telemetry.addData("ExtensionPosition2: ", extensionMotor2.getCurrentPosition());
+
+        telemetry.addData("\nRotation Position: ", armRotationMotor.getCurrentPosition());
         float power = gamepad1.right_trigger - gamepad1.left_trigger;
         if (power != 0) {
             armRotationMotor.setTargetPosition(armRotationMotor.getCurrentPosition());

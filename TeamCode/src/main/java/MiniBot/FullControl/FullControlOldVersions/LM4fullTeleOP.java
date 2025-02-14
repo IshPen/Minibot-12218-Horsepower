@@ -1,4 +1,4 @@
-package MiniBot.FullControl;
+package MiniBot.FullControl.FullControlOldVersions;
 
 import static com.pedropathing.follower.FollowerConstants.leftFrontMotorDirection;
 import static com.pedropathing.follower.FollowerConstants.leftFrontMotorName;
@@ -17,7 +17,6 @@ import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.hardware.configuration.typecontainers.MotorConfigurationType;
 
-import java.sql.Driver;
 import java.util.Arrays;
 import java.util.List;
 
@@ -25,8 +24,8 @@ import MiniBot.ButtonHelper;
 import pedroPathing.constants.FConstants;
 import pedroPathing.constants.LConstants;
 
-@TeleOp(name="Full TeleOP", group = ".")
-public class fullTeleOP extends OpMode {
+//@TeleOp(name="LM4 Full TeleOP", group = ".")
+public class LM4fullTeleOP extends OpMode {
     private DcMotorEx leftFront;
     private DcMotorEx leftRear;
     private DcMotorEx rightFront;

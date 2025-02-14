@@ -7,12 +7,12 @@ import com.qualcomm.robotcore.hardware.Servo;
 @TeleOp(name="claw control", group = "claw")
 public class clawControl extends OpMode {
 
-    Servo clawWrist, dummyWristForAllen, clawRotate, clawLeft, clawRight;
+    Servo clawWrist, clawWristOld, clawRotate, clawLeft, clawRight;
     double currentClawRotation = 0.5;
     @Override
     public void init() {
-        clawWrist = hardwareMap.get(Servo.class, "servoCH1");
-        dummyWristForAllen = hardwareMap.get(Servo.class, "servoCH2");
+        clawWristOld = hardwareMap.get(Servo.class, "servoCH1");
+        clawWrist = hardwareMap.get(Servo.class, "servoCH2");
         clawRotate = hardwareMap.get(Servo.class, "servoCH3");
         clawLeft = hardwareMap.get(Servo.class, "servoCH4");
         clawRight = hardwareMap.get(Servo.class, "servoCH5");
@@ -20,7 +20,7 @@ public class clawControl extends OpMode {
 
     @Override
     public void loop() {
-        clawWrist.setPosition(gamepad2.left_stick_y+0.3);
+        clawWrist.setPosition(gamepad2.left_stick_y+0.5);
         clawRotate.setPosition(currentClawRotation);
         currentClawRotation = Math.max(0, Math.min(1, currentClawRotation + (gamepad2.right_trigger - gamepad2.left_trigger) * 0.005));
         if (gamepad2.right_bumper) {
