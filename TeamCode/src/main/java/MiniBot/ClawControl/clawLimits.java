@@ -17,6 +17,5 @@ public class clawLimits extends OpMode {
         controlledServo.setPosition(gamepad1.left_stick_y);
         telemetry.addData("G1 Left Stick Y: ", gamepad1.left_stick_y);
         telemetry.update();
-        System.out.println("I love ishan");
     }
 }

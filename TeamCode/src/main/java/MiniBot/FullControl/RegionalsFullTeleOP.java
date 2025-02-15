@@ -78,11 +78,11 @@ public class RegionalsFullTeleOP extends OpMode {
         armRotationMotor = hardwareMap.get(DcMotorEx.class,"ArmRotation");
         armRotationMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
-        clawWristOld = hardwareMap.get(Servo.class, "servoCH1");
-        clawWrist = hardwareMap.get(Servo.class, "servoCH2");
-        clawRotate = hardwareMap.get(Servo.class, "servoCH3");
-        clawLeft = hardwareMap.get(Servo.class, "servoCH4");
-        clawRight = hardwareMap.get(Servo.class, "servoCH5");
+        clawWristOld = hardwareMap.get(Servo.class, "servoCH5");
+        clawWrist = hardwareMap.get(Servo.class, "servoCH3");
+        clawRotate = hardwareMap.get(Servo.class, "servoCH1");
+        clawLeft = hardwareMap.get(Servo.class, "servoCH2");
+        clawRight = hardwareMap.get(Servo.class, "servoCH4");
 
         gamepad1ButtonHelper = new ButtonHelper(gamepad1);
         gamepad2ButtonHelper = new ButtonHelper(gamepad2);
@@ -129,10 +129,10 @@ public class RegionalsFullTeleOP extends OpMode {
         //TODO: Devons, fix the wrist servo position at each state
         switch (clawState) {
             case GROUND:
-                clawWrist.setPosition(0);
+                clawWrist.setPosition(0.5);
                 break;
             case GRAB_SPEC_FROM_WALL:
-                clawWrist.setPosition(0.5);
+                clawWrist.setPosition(0.75);
                 break;
             case SCORING_CHAMBER:
                 clawWrist.setPosition(0.9);
